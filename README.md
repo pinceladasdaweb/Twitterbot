@@ -15,4 +15,4 @@ Tip
 -----------------
 
 * Set a cron job to visit a URL of your Twitterbot. View [example here](http://mycuteblog.com/setting-a-cron-job-to-visit-a-url/).
-* Stay tuned to the [limits of the Twitter API](https://dev.twitter.com/docs/rate-limiting/1.1/limits).
+* Stay tuned to the [limits of the Twitter API](https://dev.twitter.com/rest/public/rate-limiting).
