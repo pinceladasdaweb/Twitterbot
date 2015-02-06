@@ -23,8 +23,10 @@
         <div class="row">
             <div class="col-md-12">
                 <?php
-                    require_once('./connection.php');
-                    require_once('./oauth/twitteroauth.php');
+                    require "./connection.php";
+                    require "vendor/autoload.php";
+
+                    use Abraham\TwitterOAuth\TwitterOAuth;
 
                     try {
                         $db = new PDO('mysql:host='.DB_HOST.'; dbname='.DB_NAME, DB_USER, DB_PASSWORD);
@@ -60,7 +62,7 @@
         <hr>
 
         <footer>
-            <p>&copy; Pinceladas da Web 2014</p>
+            <p>&copy; Pinceladas da Web <?php echo date('Y'); ?></p>
         </footer>
     </div>
 </body>
