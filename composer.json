@@ -1,6 +1,6 @@
 {
     "require": {
         "php": ">=5.4.0",
-        "abraham/twitteroauth": "0.5.1"
+        "abraham/twitteroauth": "0.5.3"
     }
 }
