@@ -23,38 +23,33 @@
         <div class="row">
             <div class="col-md-12">
                 <?php
-                    require "./connection.php";
+                    require "inc/twitter_credentials.php";
+                    require "inc/Database.php";
                     require "vendor/autoload.php";
 
                     use Abraham\TwitterOAuth\TwitterOAuth;
 
-                    try {
-                        $db = new PDO('mysql:host='.DB_HOST.'; dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+                    $pdo = Database::connect();
 
-                        $getTweets = $db->prepare("SELECT *, RAND() as rand FROM tweets ORDER BY rand LIMIT 1");
-                        $getTweets->execute();
+                    $getTweets = $pdo->prepare("SELECT *, RAND() as rand FROM tweets ORDER BY rand LIMIT 1");
+                    $getTweets->execute();
 
+                    if($getTweets->rowCount() > 0) {
                         while ($row = $getTweets->fetch()) {
                             $tweet = $row['tweet'];
                         }
 
-                        $size = count($tweet);
+                        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+                        $content = $connection->get('account/verify_credentials');
 
-                        if ($size > 0) {
-                            $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-                            $content = $connection->get('account/verify_credentials');
+                        $connection->post('statuses/update', array('status' => $tweet));
 
-                            $connection->post('statuses/update', array('status' => $tweet));
-
-                            echo '<p><strong>Your latest tweet:</strong> '. $tweet .'</p>'.PHP_EOL;
-                        } else {
-                            echo '<p><strong>Error</strong> - You have no tweets registered in the database or not filled data connection properly.</p>'.PHP_EOL;
-                        }
-
-                        $db = null;
-                    } catch(PDOException $e) {
-                        echo $e->getMessage();
+                        echo '<p><strong>Your latest tweet:</strong> '. $tweet .'</p>'.PHP_EOL;
+                    } else {
+                        echo '<p><strong>Error</strong> - You have no tweets registered in the database or not filled data connection properly.</p>'.PHP_EOL;
                     }
+
+                    Database::disconnect();
                 ?>
             </div>
         </div>
