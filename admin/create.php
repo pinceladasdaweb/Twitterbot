@@ -57,7 +57,7 @@
                     <div class="form-group <?php echo !empty($tweetError) ? 'has-error' : ''; ?>">
                         <label class="col-sm-1 control-label">Tweet</label>
                         <div class="controls col-sm-11">
-                            <input class="form-control" name="tweet" type="text" placeholder="Tweet text here" value="<?php echo !empty($tweet) ? $tweet : ''; ?>">
+                            <input class="form-control" name="tweet" type="text" maxlength="140" placeholder="Tweet text here" value="<?php echo !empty($tweet) ? $tweet : ''; ?>">
                             <?php if (!empty($tweetError)): ?>
                                 <span class="help-block"><?php echo $tweetError;?></span>
                             <?php endif; ?>
