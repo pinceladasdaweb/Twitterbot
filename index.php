@@ -47,7 +47,7 @@
                         if ($connection->getLastHttpCode() === 200) {
                             echo '<p><strong>Your latest tweet:</strong> '. $tweet .'</p>'.PHP_EOL;
                         } else {
-                            echo '<p><strong>Error:</strong> A problem ocorrud. You filled your Twitter credentials correctly? Or walk abusing the Twitter API?</p>'.PHP_EOL;
+                            echo '<p><strong>Error:</strong> A problem ocurred. You filled your Twitter credentials correctly? Or walk abusing the Twitter API?</p>'.PHP_EOL;
                         }
                     } else {
                         echo '<p><strong>Error:</strong> You have no tweets registered in the database or not filled data connection properly.</p>'.PHP_EOL;
