@@ -3,6 +3,12 @@ Twitterbot
 
 A simple twitter bot script written in PHP. Each time the script is run, a new random tweet is posted on your timeline.
 
+Requirements
+-----------------
+
+* PHP >= 5.5
+* CURL extension in PHP
+
 How to use
 -----------------
 
