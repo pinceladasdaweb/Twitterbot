@@ -1,5 +1,5 @@
 <?php
-    require '../inc/database.php';
+    require '../inc/Database.php';
 
     if (!empty($_POST)) {
         $tweetError = null;

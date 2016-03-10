@@ -1,5 +1,5 @@
 <?php
-    require '../inc/database.php';
+    require '../inc/Database.php';
 
     $id = null;
     if (!empty($_GET['id'])) {
